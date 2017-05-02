@@ -38,13 +38,12 @@
       function startVyPlayer(id) {
         if (!id) { return; }
 
-        var player = new Vidyard.player(id);
-        console.log(player);
-        player.on('ready', function(info) {
-          console.log(info);
-          console.log('player ready');
-          player.play();
-        });
+        var fnName = 'fn_vidyard_' + id;
+        console.log(fnName);
+        if (window[fnName]) {
+          console.log('calling player function');
+          window[fnName]();
+        }
       }
 
       window.onload = function() {
