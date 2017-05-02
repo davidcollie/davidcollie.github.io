@@ -24,21 +24,35 @@
         return vyPlayerId;
       }
 
+      function injectVyPlayer(id) {
+        if (!id) { return; }
+
+        var s = window.createElement('script');
+        s.setAttribute('type', 'text/javascript');
+        s.setAttribute('id', 'vidyard_embed_code_' + id);
+        s.setAttribute('src', '//play.vidyard.com/' + id + '.js?v=3.1.1&type=lightbox');
+
+        document.body.appendChild(s);
+      }
+
+      function startVyPlayer(id) {
+        if (!id) { return; }
+
+        var player = new Vidyard.player(id);
+        console.log(player);
+        player.on('ready', function(info) {
+          console.log(info);
+          console.log('player ready');
+          player.play();
+        });
+      }
+
       window.onload = function() {
         var id = getVyPlayer();
         console.log('player id: ' + id);
+        injectVyPlayer(id);
+        startVyPlayer(id);
       }
-    </script>
-
-    <script type="text/javascript" id="vidyard_embed_code_s89ermZe7YeksaP7q7AhGW" src="//play.vidyard.com/s89ermZe7YeksaP7q7AhGW.js?v=3.1.1&type=lightbox"></script>
-    <script type="text/javascript">
-      <!-- window.onload = function() { -->
-      <!--   var a = document.getElementById("video-link"); -->
-      <!--   a.onclick = function() { -->
-      <!--     fn_vidyard_s89ermZe7YeksaP7q7AhGW(); -->
-      <!--     return false; -->
-      <!--   } -->
-      <!-- } -->
     </script>
 
     <style type='text/css'>
