@@ -2,26 +2,33 @@
 <html>
   <head>
     <title>Event Page</title>
+
+    <meta charset='UTF-8'>
+
+    <script type="text/javascript" id="vidyard_embed_code_s89ermZe7YeksaP7q7AhGW" src="//play.vidyard.com/s89ermZe7YeksaP7q7AhGW.js?v=3.1.1&type=lightbox"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        var a = document.getElementById("videoLink");
+        a.onclick = function() {
+          fn_vidyard_s89ermZe7YeksaP7q7AhGW();
+          return false;
+        }
+      }
+    </script>
+
     <style type='text/css'>
       body {
         padding: 1em;
       }
     </style>
-    <meta charset='UTF-8'>
   </head>
 
   <body>
-    <script type="text/javascript" id="vidyard_embed_code_s89ermZe7YeksaP7q7AhGW" src="//play.vidyard.com/s89ermZe7YeksaP7q7AhGW.js?v=3.1.1&type=lightbox"></script>
-    <div class="outer_vidyard_wrapper">
-      <div class="vidyard_wrapper" onclick="fn_vidyard_s89ermZe7YeksaP7q7AhGW();">
-        <img width="360" src="//play.vidyard.com/s89ermZe7YeksaP7q7AhGW.jpg?" alt="Remove ViewedIt User">
-        <div class="vidyard_play_button">
-          <a href="javascript:void(0);"></a>
-        </div>
-      </div>
-    </div>
-
     <h1>Event Landing Page</h1>
+
+    <p>
+      <a id='videolink' href=''>Player</a>
+    </p>
 
     <p>This is an event landing page.  It has lots of information about your event.</p>
     <p>It would be great to overlay a video on this site.</p>
