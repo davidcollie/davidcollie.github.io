@@ -14,7 +14,7 @@
         if (queryParams.length < 2) { return null; }
 
         var vyPlayerId = null;
-        var params = queryParams.split('&');
+        var params = queryParams[1].split('&');
         params.some(function(p) {
           if (p.indexOf('vy-player') !== -1) {
             vyPlayerId = p.split('=')[1];
