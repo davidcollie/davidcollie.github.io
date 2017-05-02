@@ -27,7 +27,7 @@
       function injectVyPlayer(id) {
         if (!id) { return; }
 
-        var s = window.createElement('script');
+        var s = document.createElement('script');
         s.setAttribute('type', 'text/javascript');
         s.setAttribute('id', 'vidyard_embed_code_' + id);
         s.setAttribute('src', '//play.vidyard.com/' + id + '.js?v=3.1.1&type=lightbox');
