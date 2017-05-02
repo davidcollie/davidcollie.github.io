@@ -7,6 +7,29 @@
 
     <script type='text/javascript' src="//play.vidyard.com/v0/api.js"></script>
 
+    <script type='text/javascript'>
+      function getVyPlayer() {
+        var url = window.location.href;
+        var queryParams = url.split('?');
+        if (queryParams.length < 2) { return null; }
+
+        var vyPlayerId = null;
+        var params = queryParams.split('&');
+        params.some(function(p) {
+          if (p.indexOf('vy-player') !== -1) {
+            vyPlayerId = p.split('=')[1];
+          }
+          return vyPlayerId !== null;
+        });
+        return vyPlayerId;
+      }
+
+      window.onload = function() {
+        var id = getVyPlayer();
+        console.log('player id: ' + id);
+      }
+    </script>
+
     <script type="text/javascript" id="vidyard_embed_code_s89ermZe7YeksaP7q7AhGW" src="//play.vidyard.com/s89ermZe7YeksaP7q7AhGW.js?v=3.1.1&type=lightbox"></script>
     <script type="text/javascript">
       window.onload = function() {
