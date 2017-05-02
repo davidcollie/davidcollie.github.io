@@ -24,17 +24,6 @@
         return vyPlayerId;
       }
 
-      function injectVyPlayer(id) {
-        if (!id) { return; }
-
-        var s = document.createElement('script');
-        s.setAttribute('type', 'text/javascript');
-        s.setAttribute('id', 'vidyard_embed_code_' + id);
-        s.setAttribute('src', '//play.vidyard.com/' + id + '.js?v=3.1.1&type=lightbox');
-
-        document.body.appendChild(s);
-      }
-
       function startVyPlayer(id) {
         if (!id) { return; }
 
@@ -46,11 +35,25 @@
         }
       }
 
+      function injectVyPlayer(id) {
+        if (!id) { return; }
+
+        var h = document.getElementsByTagName('head')[0];
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.id = 'vidyard_embed_code_' + id;
+        s.src = '//play.vidyard.com/' + id + '.js?v=3.1.1&type=lightbox';
+        s.onload = function() {
+          startVyPlayer(id);
+        };
+        h.appendChild(s);
+      }
+
       window.onload = function() {
         var id = getVyPlayer();
         console.log('player id: ' + id);
         injectVyPlayer(id);
-        startVyPlayer(id);
       }
     </script>
 
