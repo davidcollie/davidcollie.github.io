@@ -41,6 +41,8 @@
         s.onload = function() {
           startVyPlayer(id);
           var video = new Vidyard.player(id);
+          console.log(id);
+          console.log(video);
           video.on('playerComplete', function() {
             console.log('player complete');
             fn_vidyard_make_mini_lightbox();
