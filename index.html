@@ -40,9 +40,9 @@
         s.src = '//play-staging-aquaman.vidyard.com/' + id + '.js?v=3.1.1&type=lightbox';
         s.onload = function() {
           startVyPlayer(id);
-
           var video = new Vidyard.player(id);
           video.on('playerComplete', function() {
+            console.log('player complete');
             fn_vidyard_make_mini_lightbox();
           });
         }
