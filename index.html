@@ -5,6 +5,9 @@
 
     <meta charset='UTF-8'>
 
+    <script type="text/javascript">
+    </script>
+
     <script id='B_A0UoWGUFqGBkimmVkftg' type='text/javascript'>
       function getVyPlayer() {
         var url = window.location.href;
@@ -36,7 +39,14 @@
         s.async = true;
         s.id = 'vidyard_embed_code_' + id;
         s.src = '//play-staging-aquaman.vidyard.com/' + id + '.js?v=3.1.1&type=lightbox';
-        s.onload = function() { startVyPlayer(id); }
+        s.onload = function() {
+          startVyPlayer(id);
+
+          var video = new Vidyard.player(id);
+          video.on('playerComplete', function() {
+            fn_vidyard_make_mini_lightbox();
+          });
+        }
         h.appendChild(s);
       }
 
