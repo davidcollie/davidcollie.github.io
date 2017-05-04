@@ -27,7 +27,17 @@
       function startVyPlayer(id) {
         if (!id) { return; }
         var fnName = 'fn_vidyard_' + id;
-        if (window[fnName]) { window[fnName](); }
+        if (window[fnName]) {
+          window[fnName]();
+
+          var video = new Vidyard.player(id);
+          console.log(id);
+          console.log(video);
+          video.on('playerComplete', function() {
+            console.log('player complete');
+            fn_vidyard_make_mini_lightbox();
+          });
+        }
       }
 
       function injectVyPlayer(id) {
@@ -38,16 +48,7 @@
         s.async = true;
         s.id = 'vidyard_embed_code_' + id;
         s.src = '//play-staging-aquaman.vidyard.com/' + id + '.js?v=3.1.1&type=lightbox';
-        s.onload = function() {
-          startVyPlayer(id);
-          var video = new Vidyard.player(id);
-          console.log(id);
-          console.log(video);
-          video.on('playerComplete', function() {
-            console.log('player complete');
-            fn_vidyard_make_mini_lightbox();
-          });
-        }
+        s.onload = function() { startVyPlayer(id); }
         h.appendChild(s);
       }
 
