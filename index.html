@@ -5,8 +5,6 @@
 
     <meta charset='UTF-8'>
 
-    <script type='text/javascript' src="//play.vidyard.com/v0/api.js"></script>
-
     <script id='B_A0UoWGUFqGBkimmVkftg' type='text/javascript'>
       function getVyPlayer() {
         var url = window.location.href;
@@ -27,17 +25,7 @@
       function startVyPlayer(id) {
         if (!id) { return; }
         var fnName = 'fn_vidyard_' + id;
-        if (window[fnName]) {
-          window[fnName]();
-
-          var video = new Vidyard.player(id);
-          console.log(id);
-          console.log(video);
-          video.on('playerComplete', function() {
-            console.log('player complete');
-            fn_vidyard_make_mini_lightbox();
-          });
-        }
+        if (window[fnName]) { window[fnName](true); }
       }
 
       function injectVyPlayer(id) {
