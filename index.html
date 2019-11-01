@@ -1,49 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Event Page</title>
+    <title>Player Test Page</title>
 
     <meta charset='UTF-8'>
 
-    <script id='B_A0UoWGUFqGBkimmVkftg' type='text/javascript'>
-      function getVyPlayer() {
-        var url = window.location.href;
-        var queryParams = url.split('?');
-        if (queryParams.length < 2) { return null; }
-
-        var vyPlayerId = null;
-        var params = queryParams[1].split('&');
-        params.some(function(p) {
-          if (p.indexOf('vy-player') !== -1) {
-            vyPlayerId = p.split('=')[1];
-          }
-          return vyPlayerId !== null;
-        });
-        return vyPlayerId;
-      }
-
-      function startVyPlayer(id) {
-        if (!id) { return; }
-        var fnName = 'fn_vidyard_' + id;
-        if (window[fnName]) { window[fnName](true); }
-      }
-
-      function injectVyPlayer(id) {
-        if (!id) { return; }
-        var h = document.getElementsByTagName('head')[0];
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.async = true;
-        s.id = 'vidyard_embed_code_' + id;
-        s.src = '//play-staging-aquaman.vidyard.com/' + id + '.js?v=3.1.1&type=lightbox';
-        s.onload = function() { startVyPlayer(id); }
-        h.appendChild(s);
-      }
-
-      window.onload = function() {
-        injectVyPlayer(getVyPlayer());
-      }
-    </script>
+    <script type="text/javascript" async src="https://play-staging-aquaman.vidyard.com/embed/v4.js"></script>
 
     <style type='text/css'>
       body {
@@ -53,10 +15,15 @@
   </head>
 
   <body>
-    <h1>Event Landing Page</h1>
+    <h1>Player Test Page</h1>
+    <img
+      style="width: 100%; margin: auto; display: block;"
+      class="vidyard-player-embed"
+      src="https://play-staging-aquaman.vidyard.com/L9hYPBxSwcDRjuFCuR6wkj.jpg"
+      data-uuid="L9hYPBxSwcDRjuFCuR6wkj"
+      data-v="4"
+      data-type="inline"
+      />
 
-    <p>This is an event landing page.  It has lots of information about your event.</p>
-    <p>It would be great to overlay a video on this site.</p>
-    <p>The extension should inject vbuddy.</p>
   </body>
 </html>
